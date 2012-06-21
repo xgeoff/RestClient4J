@@ -1,4 +1,4 @@
-RestClient4J is a simple implementation of Ruby's excellent Rest_Client library.
+RestClient4J is a simple implementation of Ruby's excellent Rest_Client library. The library is completely self-contained, with no dependencies on external libraries.
 
 Usage is fairly simple.  You can call static methods to perform RESTful http calls like so:
 
