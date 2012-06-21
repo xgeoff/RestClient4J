@@ -38,8 +38,8 @@ public class RestClient implements RestCall {
     }
 
     @Override
-    public RestResponse get() {
-        return call(REQUEST_TYPE.GET, null, null);
+    public RestResponse get(Map<String, String> params) {
+        return call(REQUEST_TYPE.GET, null, params);
     }
 
     @Override

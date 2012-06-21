@@ -15,7 +15,7 @@ public class RestClient4J {
     
     public static RestResponse get(String url, Map<String, String> params) throws MalformedURLException {
         RestClient rc = new RestClient(url);
-        return rc.get();
+        return rc.get(params);
     }
     
     public static RestResponse post(String url, String content, Map<String, String> params) throws MalformedURLException {

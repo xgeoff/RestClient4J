@@ -13,7 +13,7 @@ import java.util.Map;
  */
 public interface RestCall {
     
-    RestResponse get();
+    RestResponse get(Map<String, String> params);
     RestResponse post(InputStream content, Map<String, String> params);
     RestResponse post(String content, Map<String, String> params);
     RestResponse put(InputStream content, Map<String, String> params);
