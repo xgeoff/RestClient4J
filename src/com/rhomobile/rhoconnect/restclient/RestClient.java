@@ -61,30 +61,34 @@ public class RestClient implements RestCall {
         Map.Entry<String, String> entry;
         
         try {
-            
+            int value = -1;
             connection = (HttpURLConnection) destinationUrl.openConnection();
             
             
             connection.setInstanceFollowRedirects(false); 
             connection.setRequestMethod(requestType.toString());
+            System.out.println("Request Method is: " + connection.getRequestMethod());
             
             for (Object param:params.entrySet()) {
                 entry = (Map.Entry<String, String>) param;
                 connection.addRequestProperty(entry.getKey(), entry.getValue());
             }
-
-            connection.setDoOutput(true); 
             
-            int value = content.read();
-            os = connection.getOutputStream();    
-            
-            while (value > -1) {
-                os.write(value);
+            if (content != null) {
+                
+                connection.setDoOutput(true);
                 value = content.read();
+                
+                os = connection.getOutputStream();    
+            
+                while (value > -1) {
+                    os.write(value);
+                    value = content.read();
+                }
+
+                os.flush();
             }
-            
-            os.flush();
-            
+
             res = new RestResponseImpl(connection); 
  
             connection.disconnect(); 
